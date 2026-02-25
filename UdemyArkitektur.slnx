@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Arkitektur.DataAccess/Arkitektur.DataAccess.csproj" />
+  <Project Path="Arkitektur.Entity/Arkitektur.Entity.csproj" />
+</Solution>
