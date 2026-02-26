@@ -18,7 +18,7 @@ namespace Arkitektur.DataAccess.Interceptors
                     continue;
                 }
 
-                if (entry.State is not EntityState.Added and not EntityState.Modified)
+                if (entry.State is not EntityState.Added and not EntityState.Modified and not EntityState.Deleted)
                 {
                     continue;
                 }
@@ -39,6 +39,18 @@ namespace Arkitektur.DataAccess.Interceptors
 
                     eventData.Context.Entry(baseEntity)
                         .Property(x => x.CreatedAt).IsModified = false;
+                }
+
+                if (entry.State is EntityState.Deleted)
+                {
+                    entry.State = EntityState.Modified;
+
+                    ((BaseEntity)entry.Entity).IsDeleted = true;
+                    eventData.Context.Entry(baseEntity)
+                       .Property(x => x.CreatedAt).IsModified = false;
+
+                    eventData.Context.Entry(baseEntity)
+                        .Property(x => x.UpdatedAt).CurrentValue = DateTime.UtcNow;
                 }
             }
 

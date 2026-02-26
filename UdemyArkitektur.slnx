@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Arkitektur.Business/Arkitektur.Business.csproj" Id="94949f9d-fc60-45b2-a05f-e91c4fa3592c" />
   <Project Path="Arkitektur.DataAccess/Arkitektur.DataAccess.csproj" />
   <Project Path="Arkitektur.Entity/Arkitektur.Entity.csproj" />
 </Solution>
