@@ -15,7 +15,7 @@
 
         public static BaseResult<T> Failure(string errorMessage)
         {
-            return new BaseResult<T> {Errors = new[] { new { ErrorMessage = errorMessage } } };
+            return new BaseResult<T> {Errors = new[] { new { ErrorMessage = errorMessage  } } };
         }
 
     }
