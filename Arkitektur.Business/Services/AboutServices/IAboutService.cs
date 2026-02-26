@@ -6,6 +6,6 @@ namespace Arkitektur.Business.Services.AboutServices
     {
         Task<List<ResultAboutDto>> GetAllAsycn();
         Task<ResultAboutDto> GetByIdAllAsycn(int id);
-        Task<ResultAboutDto> GetAllAsycn4();
+        Task<ResultAboutDto> GetAllAsycn5();
     }
 }
