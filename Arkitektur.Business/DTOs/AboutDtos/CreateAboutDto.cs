@@ -1,4 +1,4 @@
-﻿using Arkitektur.Business.DTOs.Base;
+﻿
 
 namespace Arkitektur.Business.DTOs.AboutDtos
 {

@@ -1,11 +1,18 @@
-﻿using Arkitektur.Business.DTOs.AboutDtos;
+﻿using Arkitektur.Business.Base;
+using Arkitektur.Business.DTOs.AboutDtos;
 
 namespace Arkitektur.Business.Services.AboutServices
 {
     public interface IAboutService
     {
-        Task<List<ResultAboutDto>> GetAllAsycn();
-        Task<ResultAboutDto> GetByIdAllAsycn(int id);
-        Task<ResultAboutDto> GetAllAsycn6();
+        Task<BaseResult<List<ResultAboutDto>>> GetAllAsycn();
+        Task<BaseResult<ResultAboutDto>> GetByIdAllAsycn(int id);
+
+        Task<BaseResult<object>> CreateAsync(CreateAboutDto createAboutDto);
+
+        Task<BaseResult<object>> DeleteAsync(int id);
+
+        Task<BaseResult<object>> UpdateAsync(UpdateAboutDto updateAboutDto);
+
     }
 }

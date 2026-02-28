@@ -5,9 +5,12 @@ using System.Linq.Expressions;
 
 namespace Arkitektur.DataAccess
 {
-    public class AppDbContext(DbContextOptions options) : DbContext(options)
-
+    public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -15,21 +18,23 @@ namespace Arkitektur.DataAccess
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
-
                 if (typeof(BaseEntity).IsAssignableFrom(entityType.ClrType))
                 {
                     modelBuilder.Entity(entityType.ClrType)
                         .HasQueryFilter(ConvertToDeleteFilter(entityType.ClrType));
                 }
-
             }
         }
 
         private static LambdaExpression ConvertToDeleteFilter(Type type)
         {
             var parameter = Expression.Parameter(type, "e");
-            var property = Expression.Property(Expression.Convert(parameter, typeof(BaseEntity)), "IsDeleted");
+            var property = Expression.Property(
+                Expression.Convert(parameter, typeof(BaseEntity)),
+                nameof(BaseEntity.IsDeleted));
+
             var notDeleted = Expression.Not(property);
+
             return Expression.Lambda(notDeleted, parameter);
         }
 

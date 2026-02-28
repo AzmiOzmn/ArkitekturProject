@@ -8,9 +8,14 @@
         public bool IsFailure => !IsSuccessful;
 
 
-        public static BaseResult<T> Success(T data)
+        public static BaseResult<T> Success(T? data)
         {
-            return new BaseResult<T> { Data = data, Errors = null };
+            return new BaseResult<T> { Data = data};
+        }
+
+        public static BaseResult<T> Success()
+        {
+            return new BaseResult<T> { Errors = null }  ;
         }
 
         public static BaseResult<T> Failure(string errorMessage)
