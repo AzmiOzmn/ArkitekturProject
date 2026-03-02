@@ -28,5 +28,10 @@ namespace Arkitektur.Business.Base
             return new BaseResult<T> { Errors = new[] { new { ErrorMessage = errorMessage } } };
         }
 
+        public static BaseResult<T> Failure(IEnumerable<string> errorMessage)
+        {
+            return new BaseResult<T> { Errors = errorMessage };
+        }
+
     }
 }
