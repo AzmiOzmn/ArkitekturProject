@@ -17,7 +17,7 @@ namespace Arkitektur.Business.Services.AppointmentServices
             var validationResult = await createValidator.ValidateAsync(createAppointmentDto);
             if (!validationResult.IsValid)
             {
-                return BaseResult<object>.Failure(validationResult.Errors.ToString());
+                return BaseResult<object>.Failure(validationResult.Errors);
             }
             await repository.AddAsync(appointment);
             var result = await unitOfWork.SaveChangesAsycn();
