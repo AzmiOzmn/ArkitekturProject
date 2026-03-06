@@ -1,11 +1,12 @@
 ﻿using Arkitektur.Business.DTOs.AppointmentDtos;
+using Arkitektur.Entity.Entities;
 using FluentValidation;
 
-namespace Arkitektur.Business.Validators.AppointmentValidators
+namespace Arkitektur.Business.Validators
 {
-    public class CreateAppointmentValidator : AbstractValidator<CreateAppointmentDto>
+    public class AppointmentValidator : AbstractValidator<Appointment>
     {
-        public CreateAppointmentValidator()
+        public AppointmentValidator()
         {
             RuleFor(x => x.Email).NotEmpty().WithMessage("Email are required.")
                    .EmailAddress().WithMessage("Please enter a valid email address.");
