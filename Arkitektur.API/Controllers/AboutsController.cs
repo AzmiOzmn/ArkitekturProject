@@ -40,14 +40,14 @@ namespace Arkitektur.API.Controllers
         public async Task<IActionResult> Update(UpdateAboutDto request)
         {
             var response = await aboutService.UpdateAsync(request);
-            return response.IsSuccessful ? Ok() : BadRequest(response);
+            return response.IsSuccessful ? Ok(response) : BadRequest(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await aboutService.DeleteAsync(id);
-            return response.IsSuccessful ? Ok() : BadRequest(response);
+            return response.IsSuccessful ? Ok(response) : BadRequest(response);
         }
     }
 }

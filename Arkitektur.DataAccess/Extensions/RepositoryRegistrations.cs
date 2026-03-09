@@ -18,7 +18,15 @@ namespace Arkitektur.DataAccess.Extensions
 
             });
 
-            
+            services.Scan(opt => opt
+         .FromAssemblyOf<DataAccessAssambly>()
+         .AddClasses(x => x.Where(t => t.Name.EndsWith("Repository")))
+         .AsImplementedInterfaces()
+         .WithScopedLifetime()
+         );  //Otomatik Olarak Registirations İşlemi
+
+
+
             services.AddScoped <IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
